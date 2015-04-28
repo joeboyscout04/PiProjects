@@ -6,7 +6,10 @@ A 'gentle wakeup' alarm clock that uses the PiGlow.  It will slowly ramp up the 
 
 Wakeup time configurable in the code.  It's setup to not turn on on the weekends (Saturday/Sunday morning). 
 
-Prerequisites: The [PiGlow](https://pypi.python.org/pypi/PiGlow/0.5) package.
+Prerequisites: 
+
+[PiGlow](https://pypi.python.org/pypi/PiGlow/0.5)
+[pytz](https://pypi.python.org/pypi/pytz/2015.2)
 
 ##Soil Moisture Sensor
 From [JenFoxBot](https://github.com/jenfoxbot/SoilSensorAPI)
