@@ -6,8 +6,8 @@ file = open("SensorData.txt", "w") #stores data file in same directory as this p
 
 #time constant values from experimentation
 #TODO: feedback loops to adjust these values?
-airTimeConstant = 5
-waterTimeConstant = 8
+airTimeConstant = 3.45
+waterTimeConstant = 5.00
 
 #Define function to measure charge time
 def RC_Analog(Pin):
@@ -43,9 +43,9 @@ while True:
     file.write(str(ts) + " " + str(reading) + "\n") #write data to file
 
     #when the soil is 60% between air and water, it's too dry.
-    soilTooDry = (waterTimeConstant - airTimeConstant)*0.6 + airTimeConstant
     dryPercentage = 0.6
-    while (reading < 10.00):
+    soilTooDry = (waterTimeConstant - airTimeConstant)*dryPercentage + airTimeConstant
+    while (reading < soilTooDry):
         time_start = time.time()
         counter = counter + 1
         if counter >= 50:
@@ -53,8 +53,8 @@ while True:
     time_end = time.time()
     if (counter >= 25 and (time_end - time_start) <= 60): # if you get 25 measurements that indicate dry soil in less than one minute, need to water
         print('Not enough water for your plants to survive! Please water now.') #comment this out for testing
-    #else:
-        #print('Your plants are safe and healthy, yay!')
+    else:
+        print('Your plants are safe and healthy, yay!')
 
 GPIO.cleanup()
 file.close()
