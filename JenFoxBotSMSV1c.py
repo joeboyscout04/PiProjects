@@ -12,7 +12,7 @@ waterTimeConstant = 8
 #Define function to measure charge time
 def RC_Analog(Pin):
     counter=0
-    sleepTime = 0.1
+    # sleepTime = 0.1
 
     #I've found that the capacitance change is really small, so let's multiply it to get numbers > 1.
     # fudgeFactor = 10000
@@ -20,7 +20,7 @@ def RC_Analog(Pin):
     #Discharge capacitor
     GPIO.setup(13, GPIO.OUT)
     GPIO.output(13, GPIO.LOW)
-    time.sleep(sleepTime) #in seconds, suspends execution.
+    time.sleep(0.1) #in seconds, suspends execution.
     GPIO.setup(13, GPIO.IN)
 #Count loops until voltage across capacitor reads high on GPIO
     while (GPIO.input(13)==GPIO.LOW):
