@@ -15,7 +15,7 @@ def RC_Analog(Pin):
     sleepTime = 0.1
 
     #I've found that the capacitance change is really small, so let's multiply it to get numbers > 1.
-    fudgeFactor = 10000
+    # fudgeFactor = 10000
     start_time = time.time()
     #Discharge capacitor
     GPIO.setup(13, GPIO.OUT)
