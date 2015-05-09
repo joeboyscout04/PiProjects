@@ -27,7 +27,7 @@ def RC_Analog(Pin):
         counter=counter+1
     print counter
     end_time = time.time()
-    return ((end_time - start_time)-sleepTime)*fudgeFactor
+    return end_time - start_time
 
 
     #Main program loop
