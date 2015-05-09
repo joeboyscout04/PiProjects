@@ -6,8 +6,8 @@ file = open("SensorData.txt", "w") #stores data file in same directory as this p
 
 #time constant values from experimentation
 #TODO: feedback loops to adjust these values?
-airTimeConstant = 5
-waterTimeConstant = 8
+# airTimeConstant = 5
+# waterTimeConstant = 8
 
 #Define function to measure charge time
 def RC_Analog(Pin):
@@ -43,8 +43,8 @@ while True:
     file.write(str(ts) + " " + str(reading) + "\n") #write data to file
 
     #when the soil is 60% between air and water, it's too dry.
-    soilTooDry = (waterTimeConstant - airTimeConstant)*0.6 + airTimeConstant
-    dryPercentage = 0.6
+    # soilTooDry = (waterTimeConstant - airTimeConstant)*0.6 + airTimeConstant
+    # dryPercentage = 0.6
     while (reading < 10.00):
         time_start = time.time()
         counter = counter + 1
