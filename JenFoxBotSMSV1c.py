@@ -25,7 +25,7 @@ def RC_Analog(Pin):
 #Count loops until voltage across capacitor reads high on GPIO
     while (GPIO.input(13)==GPIO.LOW):
         counter=counter+1
-    print counter
+    # print counter
     end_time = time.time()
     return end_time - start_time
 
