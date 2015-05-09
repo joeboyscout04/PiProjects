@@ -9,12 +9,12 @@ def RC_Analog(Pin):
     counter=0
     start_time = time.time()
     #Discharge capacitor
-    GPIO.setup(14, GPIO.OUT)
-    GPIO.output(14, GPIO.LOW)
+    GPIO.setup(13, GPIO.OUT)
+    GPIO.output(13, GPIO.LOW)
     time.sleep(0.1) #in seconds, suspends execution.
-    GPIO.setup(14, GPIO.IN)
+    GPIO.setup(13, GPIO.IN)
 #Count loops until voltage across capacitor reads high on GPIO
-    while (GPIO.input(14)==GPIO.LOW):
+    while (GPIO.input(13)==GPIO.LOW):
         counter=counter+1
     end_time = time.time()
     return end_time - start_time
