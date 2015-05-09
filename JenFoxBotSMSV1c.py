@@ -25,6 +25,7 @@ def RC_Analog(Pin):
 #Count loops until voltage across capacitor reads high on GPIO
     while (GPIO.input(13)==GPIO.LOW):
         counter=counter+1
+    print counter
     end_time = time.time()
     return ((end_time - start_time)-sleepTime)*fudgeFactor
 
@@ -51,9 +52,9 @@ while True:
             break
     time_end = time.time()
     if (counter >= 25 and (time_end - time_start) <= 60): # if you get 25 measurements that indicate dry soil in less than one minute, need to water
-        print('Not enough water for your plants to survive! Please water now.') #comment this out for testing
-    else:
-        print('Your plants are safe and healthy, yay!')
+        #print('Not enough water for your plants to survive! Please water now.') #comment this out for testing
+    #else:
+        #print('Your plants are safe and healthy, yay!')
 
 GPIO.cleanup()
 file.close()
