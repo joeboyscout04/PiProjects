@@ -52,7 +52,7 @@ while True:
             break
     time_end = time.time()
     if (counter >= 25 and (time_end - time_start) <= 60): # if you get 25 measurements that indicate dry soil in less than one minute, need to water
-        #print('Not enough water for your plants to survive! Please water now.') #comment this out for testing
+        print('Not enough water for your plants to survive! Please water now.') #comment this out for testing
     #else:
         #print('Your plants are safe and healthy, yay!')
 
