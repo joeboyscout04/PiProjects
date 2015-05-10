@@ -13,6 +13,7 @@ dryPercentage = 0.3
 soilTooDry = (waterTimeConstant - airTimeConstant)*dryPercentage + airTimeConstant
 time_start = time.time()
 counter = 0
+needsWatering = 0
 
 #Define function to measure charge time
 def RC_Analog(Pin):
@@ -45,12 +46,19 @@ while True:
     print ts, reading  #print counts using GPIO4 and time
     file.write(str(ts) + " " + str(reading) + "\n") #write data to file
 
-    if(reading < soilTooDry):
+
+    if(not needsWatering and reading < soilTooDry):
         counter = counter + 1
+    elif(needsWatering and reading >= soilTooDry):
+        counter = counter + 1
+
 
     time_end = time.time()
 
-    if (counter >= 25): # if you get 25 measurements that indicate dry soil in less than one minute, need to water
+    if(counter >= 25):
+        needsWatering = not needsWatering
+
+    if (needsWatering): # if you get 25 measurements that indicate dry soil in less than one minute, need to water
         print('Not enough water for your plants to survive! Please water now.') #comment this out for testing
     else:
         print('Your plants are safe and healthy, yay!')
