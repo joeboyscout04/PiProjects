@@ -1,5 +1,5 @@
 import smtplib
-import os 
+import os
 
 smtpUser = os.environ.get('SMTP_USER')
 smtpPass = os.environ.get('SMTP_PASSWORD')
@@ -11,7 +11,7 @@ subject = 'Python Test'
 header = "to: "
 body = "Python script"
 
-s = smtplib.SMTP_SSL('smtp.gmail.com',465)
+s = smtplib.SMTP('smtp.gmail.com',587)
 s.ehlo()
 s.starttls()
 s.ehlo()

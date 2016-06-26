@@ -37,7 +37,7 @@ def send_email():
     header = "to: "
     body = "Your plants need water.  The Raspberry Pi moisture sensor detected the water level was too low."
 
-    s = smtplib.SMTP_SSL('smtp.gmail.com',465)
+    s = smtplib.SMTP('smtp.gmail.com',587)
     s.ehlo()
     s.starttls()
     s.ehlo()
