@@ -16,7 +16,7 @@ dryPercentage = 0.3
 soilTooDry = (waterTimeConstant - airTimeConstant)*dryPercentage + airTimeConstant
 time_start = datetime.datetime.now()
 counter = 0
-needsWatering = 0
+needsWatering = False
 
 print('Hello World!')
 #given a date, return yearmonthday
@@ -96,9 +96,6 @@ while True:
 
     time_end = datetime.datetime.now()
 
-    if counter >= 25:
-        needsWatering = not needsWatering
-
     if needsWatering: # if you get 25 measurements that indicate dry soil in less than one minute, need to water
         print('Not enough water for your plants to survive! Please water now.') #comment this out for testing
         if not daily_email_sent:
@@ -109,7 +106,10 @@ while True:
         print('Your plants are safe and healthy, yay!')
 
     #reset the counter every 60 seconds.
+    #if more than 25 readings in 60 seconds are different, flip the state
     if (time_end - time_start).seconds > 60:
+        if counter >= 25:
+            needsWatering = not needsWatering
         time_start = datetime.datetime.now()
         counter = 0
 
