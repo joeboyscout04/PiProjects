@@ -29,7 +29,7 @@ def send_email():
 
     smtpUser = os.environ.get('SMTP_USER')
     smtpPass = os.environ.get('SMTP_PASSWORD')
-    print("The username is %s and password is %s" % (smtpUser,smtpPass))
+
     toAdd = os.environ.get('NOTIFY_USER_EMAIL')
 
     fromAdd = smtpUser
