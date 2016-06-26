@@ -22,7 +22,7 @@ print('Hello World!')
 #April 4, 1987 -> 19870404
 def year_month_day(date):
 
-    return int(str(date.year()) + str(date.month()).zfill(2) + str(date.day()).zfill(2))
+    return int(str(date.year) + str(date.month).zfill(2) + str(date.day).zfill(2))
 
 def send_email():
 
