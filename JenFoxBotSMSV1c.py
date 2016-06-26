@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import datetime
+import time
 import smtplib
 import os
 GPIO.setmode(GPIO.BCM)
@@ -64,7 +65,7 @@ def RC_Analog(Pin):
     #Discharge capacitor
     GPIO.setup(13, GPIO.OUT)
     GPIO.output(13, GPIO.LOW)
-    datetime.sleep(sleep_time) #in seconds, suspends execution.
+    time.sleep(sleep_time) #in seconds, suspends execution.
     GPIO.setup(13, GPIO.IN)
 #Count loops until voltage across capacitor reads high on GPIO
     while GPIO.input(13)==GPIO.LOW:
@@ -79,7 +80,7 @@ def RC_Analog(Pin):
  #Main program loop
 while True:
 
-    datetime.sleep(1)
+    time.sleep(1)
     ts = datetime.datetime.now()
     reading = RC_Analog(4) #store counts in a variable
     
