@@ -111,6 +111,7 @@ while True:
     #if more than 25 readings in 60 seconds are different, flip the state
     if (time_end - time_start).seconds > 60:
         if counter >= 25:
+            print("Switch state!")
             needsWatering = not needsWatering
         time_start = datetime.datetime.now()
         counter = 0
