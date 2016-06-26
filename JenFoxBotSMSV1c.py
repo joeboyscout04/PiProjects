@@ -61,7 +61,7 @@ def RC_Analog(Pin):
 
     #I've found that the capacitance change is really small, so let's multiply it to get numbers > 1.
     fudge_factor = 10000
-    start_time = datetime.datetime.now()
+    start_time = time.time()
     #Discharge capacitor
     GPIO.setup(13, GPIO.OUT)
     GPIO.output(13, GPIO.LOW)
@@ -70,7 +70,7 @@ def RC_Analog(Pin):
 #Count loops until voltage across capacitor reads high on GPIO
     while GPIO.input(13)==GPIO.LOW:
         counter_inner=counter_inner+1
-    end_time = datetime.datetime.now()
+    end_time = time.time()
     # print counter
     return ((end_time - start_time)-sleep_time)*fudge_factor
 
@@ -109,7 +109,7 @@ while True:
         print('Your plants are safe and healthy, yay!')
 
     #reset the counter every 60 seconds.
-    if (time_end - time_start) > 60:
+    if (time_end - time_start).seconds > 60:
         time_start = datetime.datetime.now()
         counter = 0
 
