@@ -13,7 +13,7 @@ waterTimeConstant = 5.00
 #when the soil is 30% between air and water, it's too dry.
 dryPercentage = 0.3
 soilTooDry = (waterTimeConstant - airTimeConstant)*dryPercentage + airTimeConstant
-time_start = datetime.datetime()
+time_start = datetime.datetime.now()
 counter = 0
 needsWatering = 0
 
@@ -60,7 +60,7 @@ def RC_Analog(Pin):
 
     #I've found that the capacitance change is really small, so let's multiply it to get numbers > 1.
     fudge_factor = 10000
-    start_time = datetime.time()
+    start_time = datetime.datetime.now()
     #Discharge capacitor
     GPIO.setup(13, GPIO.OUT)
     GPIO.output(13, GPIO.LOW)
@@ -69,7 +69,7 @@ def RC_Analog(Pin):
 #Count loops until voltage across capacitor reads high on GPIO
     while GPIO.input(13)==GPIO.LOW:
         counter_inner=counter_inner+1
-    end_time = datetime.time()
+    end_time = datetime.datetime.now()
     # print counter
     return ((end_time - start_time)-sleep_time)*fudge_factor
 
@@ -80,7 +80,7 @@ def RC_Analog(Pin):
 while True:
 
     datetime.sleep(1)
-    ts = datetime.datetime()
+    ts = datetime.datetime.now()
     reading = RC_Analog(4) #store counts in a variable
     
     print ts, reading  #print counts using GPIO4 and time
@@ -93,7 +93,7 @@ while True:
         counter = counter + 1
 
 
-    time_end = datetime.datetime()
+    time_end = datetime.datetime.now()
 
     if counter >= 25:
         needsWatering = not needsWatering
@@ -109,7 +109,7 @@ while True:
 
     #reset the counter every 60 seconds.
     if (time_end - time_start) > 60:
-        time_start = datetime.time()
+        time_start = datetime.datetime.now()
         counter = 0
 
     if todays_ymd < year_month_day(ts):
