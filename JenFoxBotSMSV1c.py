@@ -17,6 +17,7 @@ time_start = time.time()
 counter = 0
 needsWatering = 0
 
+print('Hello World!')
 #given a date, return yearmonthday
 #April 4, 1987 -> 19870404
 def year_month_day(date):
@@ -43,6 +44,7 @@ def send_email():
     s.login(smtpUser,smtpPass)
     s.sendmail(fromAdd,toAdd,header + '\n' + body)
     s.quit()
+    return
 
 
 #today's year, month and day.
