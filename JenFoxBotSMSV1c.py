@@ -89,21 +89,23 @@ while True:
 
 
     if not needsWatering and reading < soilTooDry:
+        print("doesnt need water and reading too dry %s" % soilTooDry)
         counter = counter + 1
     elif needsWatering and reading >= soilTooDry:
+        print("needs water and soil is wet %s" % soilTooDry)
         counter = counter + 1
 
 
     time_end = datetime.datetime.now()
 
     if needsWatering: # if you get 25 measurements that indicate dry soil in less than one minute, need to water
-        print('Not enough water for your plants to survive! Please water now.') #comment this out for testing
+        print('Not enough water for your plants to survive! Please water now. counter: %s' % counter) #comment this out for testing
         if not daily_email_sent:
             send_email()
             daily_email_sent = True
 
     else:
-        print('Your plants are safe and healthy, yay!')
+        print('Your plants are safe and healthy, yay! counter: %s' % counter)
 
     #reset the counter every 60 seconds.
     #if more than 25 readings in 60 seconds are different, flip the state
