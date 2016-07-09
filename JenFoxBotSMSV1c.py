@@ -5,6 +5,12 @@ import smtplib
 import os
 GPIO.setmode(GPIO.BCM)
 
+##########################TO Run#################################
+# For some reason, the rPi wants to run as root. BUT we need environmental variables also.
+# So set your environmental variables and then run this program with -E option.
+# >sudo -E python JenFoxBotSMSV1c.py
+#################################################################
+
 file = open("SensorData.txt", "w") #stores data file in same directory as this program file
 
 #time constant values from experimentation
